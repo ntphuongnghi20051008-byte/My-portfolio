@@ -1,88 +1,75 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Đèn Kéo Quân - Bài 29</title>
+    <meta charset="UTF-8">
+    <title>Đèn kéo quân</title>
 
-<style>
-    body {
-        background: #111;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+        }
 
-    h1 {
-        margin-top: 40px;
-    }
+        h1 {
+            margin-top: 40px;
+        }
 
-    .scene {
-        width: 300px;
-        height: 300px;
-        margin: 100px auto;
-        perspective: 1000px;
-    }
+        #den {
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+            border-radius: 50%;
+            border: 8px solid red;
+            background: repeating-conic-gradient(
+                yellow 0deg 30deg,
+                red 30deg 60deg
+            );
+            display: none;
+            animation: quay 2s linear infinite;
+        }
 
-    .carousel {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transform-style: preserve-3d;
-        animation: rotate 10s linear infinite;
-    }
+        @keyframes quay {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
 
-    .carousel img {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        top: 50px;
-        left: 50px;
-        object-fit: cover;
-        border-radius: 10px;
-        cursor: pointer;
-    }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
 
-    .carousel img:nth-child(1) { transform: rotateY(0deg)   translateZ(250px); }
-    .carousel img:nth-child(2) { transform: rotateY(60deg)  translateZ(250px); }
-    .carousel img:nth-child(3) { transform: rotateY(120deg) translateZ(250px); }
-    .carousel img:nth-child(4) { transform: rotateY(180deg) translateZ(250px); }
-    .carousel img:nth-child(5) { transform: rotateY(240deg) translateZ(250px); }
-    .carousel img:nth-child(6) { transform: rotateY(300deg) translateZ(250px); }
+        button:hover {
+            background: darkred;
+        }
 
-    @keyframes rotate {
-        from { transform: rotateY(0deg); }
-        to   { transform: rotateY(360deg); }
-    }
-</style>
+        a {
+            display: block;
+            margin-top: 30px;
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>ĐÈN KÉO QUÂN</h1>
-<p>Di chuột vào hình để dừng – Rê chuột ra để quay tiếp</p>
+    <h1>Hiệu ứng Đèn kéo quân</h1>
+    <p>Bấm nút bên dưới để xem đèn quay</p>
 
-<div class="scene">
-    <div class="carousel" id="carousel">
-        <img src="7.jpg">
-        <img src="8.jpg">
-        <img src="3.jpg">
-        <img src="0.jpg">
-        <img src="71.jpg">
-        <img src="77.jpg">
-    </div>
-</div>
+    <button onclick="xemDen()">Xem đèn kéo quân</button>
 
-<script>
-    const carousel = document.getElementById("carousel");
+    <div id="den"></div>
 
-    carousel.addEventListener("mouseover", function () {
-        carousel.style.animationPlayState = "paused";
-    });
+    <a href="/My-portfolio/index.html">⬅ Quay về Trang chủ</a>
 
-    carousel.addEventListener("mouseout", function () {
-        carousel.style.animationPlayState = "running";
-    });
-</script>
+    <script>
+        function xemDen() {
+            document.getElementById("den").style.display = "block";
+        }
+    </script>
 
 </body>
 </html>
