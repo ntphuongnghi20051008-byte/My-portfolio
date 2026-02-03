@@ -2,50 +2,43 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Đèn kéo quân</title>
-
+    <title>Bài 29 - Đèn kéo quân</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: #f4f4f4;
         }
 
         h1 {
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         #den {
             width: 300px;
-            height: 300px;
-            margin: 30px auto;
-            border-radius: 50%;
-            border: 8px solid red;
-            background: repeating-conic-gradient(
-                yellow 0deg 30deg,
-                red 30deg 60deg
-            );
-            display: none;
-            animation: quay 2s linear infinite;
+            height: 200px;
+            margin: 40px auto;
+            border: 3px solid red;
+            overflow: hidden;
+            position: relative;
         }
 
-        @keyframes quay {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .chu {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 24px;
+            font-weight: bold;
+            color: darkred;
+            top: 80px;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 10px 20px;
             font-size: 16px;
             background: red;
             color: white;
             border: none;
             border-radius: 6px;
             cursor: pointer;
-        }
-
-        button:hover {
-            background: darkred;
         }
 
         a {
@@ -56,20 +49,33 @@
 </head>
 <body>
 
-    <h1>Hiệu ứng Đèn kéo quân</h1>
-    <p>Bấm nút bên dưới để xem đèn quay</p>
+<h1>Hiệu ứng Đèn kéo quân</h1>
+<p>Bài 29 – JavaScript</p>
 
-    <button onclick="xemDen()">Xem đèn kéo quân</button>
+<div id="den">
+    <div class="chu" id="chu">🎉 Chào mừng đến với Website của Nghi 🎉</div>
+</div>
 
-    <div id="den"></div>
+<button onclick="batDau()">Xem đèn kéo quân</button>
 
-    <a href="/My-portfolio/index.html">⬅ Quay về Trang chủ</a>
+<a href="index.html">← Quay về Trang chủ</a>
 
-    <script>
-        function xemDen() {
-            document.getElementById("den").style.display = "block";
-        }
-    </script>
+<script>
+    let x = 300;
+    let chay;
+
+    function batDau() {
+        if (chay) return;
+
+        chay = setInterval(() => {
+            x -= 2;
+            if (x < -400) {
+                x = 300;
+            }
+            document.getElementById("chu").style.left = x + "px";
+        }, 30);
+    }
+</script>
 
 </body>
 </html>
